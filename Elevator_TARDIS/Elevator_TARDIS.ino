@@ -161,7 +161,7 @@ void setup()
 
   // Set the VS1053 volume. 0 is loudest, 255 is lowest (off):
 
-  MP3player.setVolume(30,30);
+  MP3player.setVolume(20,20);
   
   // Turn on the amplifier chip:
   
@@ -220,10 +220,7 @@ void setup()
 
 void loop()
 {
-//  if (!MP3player.isPlaying())
-//    MP3player.playMP3("TARDIS.mp3");
-//
-//  Mp3whilePlaying();
+
   byte result;
 
   while(1)
@@ -234,6 +231,10 @@ void loop()
       delay(100);
       readFrom(DEVICE, 0x30, 1, &result);
       digitalWrite(ROT_LEDR,LOW);
+      
+      if (!MP3player.isPlaying())
+        MP3player.playMP3("TARDIS.mp3");
+
     }
   }
 
